@@ -1,24 +1,3 @@
-terraform {
-  required_version = ">=1"
-
-  backend "gcs" {
-    bucket = "tf-state-learn-at-lunch"
-    prefix = "very-secret-folder"
-  }
-
-  required_providers {
-    google = {
-      source  = "google"
-      version = ">=4.4.0"
-    }
-  }
-}
-
-provider "google" {
-  project = "ag04-workshop"
-  region  = "europe-west3"
-  }
-
 resource "google_compute_instance" "test" {
   name         = "latl-test"
   machine_type = "e2-micro"

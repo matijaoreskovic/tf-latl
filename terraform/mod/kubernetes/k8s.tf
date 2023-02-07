@@ -1,18 +1,3 @@
-terraform {
-  required_version = ">=1"
-
-  required_providers {
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = ">= 2.7"
-    }
-  }
-}
-
-provider "kubernetes" {
-  config_path = "~/.kube/config"
-}
-
 resource "kubernetes_namespace" "namespace" {
   metadata {
     name = "learn-at-lunch"
@@ -34,6 +19,11 @@ resource "kubernetes_secret" "secrets" {
     data = {
       "very_secret_animal" = random_pet.random_animal.id
     }
+}
+
+data "google_compute_instance" "gcp-vm-instance" {
+  name = "latl-test"
+  zone = "europe-west3-c"
 }
 
 resource "kubernetes_deployment" "web" {
@@ -84,6 +74,10 @@ resource "kubernetes_deployment" "web" {
                 key  = "very_secret_animal"
               }
             }
+          }
+          env {
+            name = "VARIABLE_FROM_DATA"
+            value = data.google_compute_instance.gcp-vm-instance.boot_disk.0.initialize_params.0.image
           }
           port {
             container_port = 80
