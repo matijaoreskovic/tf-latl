@@ -21,6 +21,8 @@ terraform {
 provider "google" {
   project = "ag04-workshop"
   region  = "europe-west3"
+  # (alternative) credentials   = "/path/to/key.json"
+  # (alternative) access_token  = "oauth-token"
 }
 
 provider "kubernetes" {
@@ -28,7 +30,7 @@ provider "kubernetes" {
 }
 
 module "kuberentes" {
-  source = "../mod/kubernetes"
+  source = "../../mod/kubernetes"
     depends_on = [
     module.gcp
   ]
@@ -39,5 +41,5 @@ output "lb-access-ip" {
 }
 
 module "gcp" {
-  source = "../mod/gcp"
+  source = "../../mod/gcp"
 }
