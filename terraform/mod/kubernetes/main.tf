@@ -23,11 +23,6 @@ resource "kubernetes_secret" "secrets" {
     }
 }
 
-data "google_compute_instance" "gcp-vm-instance" {
-  name = "latl-test"
-  zone = "europe-west3-c"
-}
-
 resource "kubernetes_deployment" "web" {
   depends_on = [
     kubernetes_secret.secrets
@@ -111,7 +106,7 @@ resource "kubernetes_service" "web_lb" {
     kubernetes_deployment.web
   ]
   timeouts {
-    create = "3m"
+    create = "1m"
   }
   metadata {
     namespace = var.gke_namespace

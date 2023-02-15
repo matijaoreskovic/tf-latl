@@ -36,3 +36,4 @@ terraform.rc
 # MacOS
 .DS_Store
 **/.terraform.lock.hcl
+.vscode/*
