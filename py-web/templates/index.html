@@ -10,15 +10,15 @@
                 text-align: center;
             }
             .text-font {
-                line-height: 100vh;
                 font-size: xx-large;
             }
       </style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
     <body>
-        <div class="text"><p class="text-font">TOP SECRET ANIMAL: {{ env_var1 }}</p></div>
-        <div class="text"><p class="text-font">GCP VM Instance OS is {{ env_var2 }}</p></div>
-        <a href="https://www.wearenotch.com"><img src="{{ url_for('static', filename='wp-notch.jpg') }}" style="width:70%; display: block; margin: 0 auto;"></a>
+        <div class="text"><p class="text-font">RANDOM ANIMAL: {{ env_var1 }}</p></div>
+        <div class="text"><p class="text-font">Keycloak url is: {{ env_var2 }}</p></div>
+        <br><br>
+        <p><a href="https://www.wearenotch.com"><img src="{{ url_for('static', filename='wp-notch.jpg') }}" style="width:70%; display: block; margin: 0 auto;"></a></p>
 </body>
 </html>

@@ -77,9 +77,14 @@ resource "kubernetes_deployment" "web" {
               }
             }
           }
-          env {
-            name = "VARIABLE_FROM_DATA"
-            value = data.google_compute_instance.gcp-vm-instance.boot_disk.0.initialize_params.0.image
+           env {
+            name = "KEYCLOAK_URL"
+            value_from {
+              secret_key_ref {
+                name = "web-secret"
+                key  = "keycloak_url"
+              }
+            }
           }
           port {
             container_port = 80
