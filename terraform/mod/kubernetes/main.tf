@@ -18,6 +18,8 @@ resource "kubernetes_secret" "secrets" {
     }
     data = {
       "very_secret_animal" = random_pet.random_animal.id
+      "keycloak_password"  = var.keycloak_password
+      "keycloak_url"       = var.keycloak_url
     }
 }
 
