@@ -32,7 +32,7 @@ locals {
   keycloak_url      = data.kubernetes_secret.keycloak-credentials.data.keycloak_url
   keycloak_password = data.kubernetes_secret.keycloak-credentials.data.keycloak_password
   
-  init_password     = "T3st1ngPa$$word!"
+  init_password     = "InicijalniPassword123!"
   users = csvdecode(file("${path.module}/users.csv"))
 }
 
